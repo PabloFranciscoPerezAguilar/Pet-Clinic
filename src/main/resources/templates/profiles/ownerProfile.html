@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/owners :: owners (~{::body},'user')}">
+    <body>
+        <form th:object="${profile}" class="form-horizontal" id="add-user-form" method="post" enctype="multipart/form-data">
+            <div class="col-sm-offset-1 col-sm-10">
+                <h3>Imagen de Perfil:</h3>
+                <td><img style="height: 150px" th:src="@{'/resources/images/profiles/' + ${profile.foto}}"></td>
+                <input type="file" name="files" />           
+            </div>
+            <button class="btn btn-default" type="submit" th:text="${text}" >Cambiar Foto</button>
+        </form>
+        <a class="btn btn-default" th:href="@{/users/edit/__${profile.id_usuario}__}">Ir a informacion de usuario</a>
+        <a class="btn btn-default" th:href="@{/owners/__${profile.id_owner}__/edit}">Ir a informacion de propietario</a>
+        
+    </body>
+</html>
